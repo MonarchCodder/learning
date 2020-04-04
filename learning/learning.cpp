@@ -8,13 +8,29 @@
 using namespace std;
 extern void SwapVal(vector<int>& array, int i, int j);
 extern void QuickSort(vector<int>& array, int left, int right);
+// 归并排序
+extern void MergeSort(vector<int>& array, int left, int right, vector<int>& resArray);
+// Merge函数用于归并的并
+extern void Merge(vector<int>& array, int left, int right, vector<int>& resArray);
 
 int main()
 {
 	vector<int> array = { 3,1,2,5,4 };
+	// 快速排序
 	QuickSort(array, 0, array.size() - 1);
+	cout << "Quick Sort" << endl;
+	for_each(array.begin(), array.end(), [](int num) {cout << num << ","; });
+	cout << endl;
+	// 归并排序
+	array = { 3,1,2,5,4};
+	cout << "Merge Sort Pre" << endl;
+	for_each(array.begin(), array.end(), [](int num) {cout << num << ","; });
+	vector<int> resArray(array.size(),0);
+	MergeSort(array, 0, array.size() - 1, resArray);
+	cout << endl << "Merge Sort After Temp" << endl;
+	for_each(resArray.begin(), resArray.end(), [](int num) {cout << num << endl; });
+	cout << endl << "Merge Sort After" << endl;
 	for_each(array.begin(), array.end(), [](int num) {cout << num << endl; });
-	
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
